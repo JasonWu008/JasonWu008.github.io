@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="本文主要总结了前端面试过程中常见的计算机网络相关的知识点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://47.98.159.95/my_blog/tcp/001.jpg">
-<meta property="og:image" content="http://47.98.159.95/my_blog/tcp/002.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/img/img5.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/img/img6.jpg">
 <meta property="og:image" content="http://47.98.159.95/my_blog/tcp/007.jpg">
 <meta property="og:image" content="http://47.98.159.95/my_blog/tcp/010.jpg">
 <meta property="og:image" content="http://47.98.159.95/my_blog/tcp/011.jpg">
 <meta property="og:image" content="http://47.98.159.95/my_blog/tcp/012.jpg">
-<meta property="og:updated_time" content="2020-10-18T03:21:42.290Z">
+<meta property="og:updated_time" content="2020-10-18T14:04:42.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端校招之计算机网络篇">
 <meta name="twitter:description" content="本文主要总结了前端面试过程中常见的计算机网络相关的知识点">
-<meta name="twitter:image" content="http://47.98.159.95/my_blog/tcp/001.jpg">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/img5.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -481,8 +481,8 @@
 <li><strong>可靠性</strong></li>
 <li><strong>面向字节流</strong></li>
 </ol>
-<h3 id="2、三次握手和四次挥手"><a href="#2、三次握手和四次挥手" class="headerlink" title="2、三次握手和四次挥手"></a>2、三次握手和四次挥手</h3><p><img src="http://47.98.159.95/my_blog/tcp/001.jpg" alt="img"></p>
-<p><img src="http://47.98.159.95/my_blog/tcp/002.jpg" alt="img"></p>
+<h3 id="2、三次握手和四次挥手"><a href="#2、三次握手和四次挥手" class="headerlink" title="2、三次握手和四次挥手"></a>2、三次握手和四次挥手</h3><p><img src="/assets/img/img5.jpg" alt="img"></p>
+<p><img src="/assets/img/img6.jpg" alt="img"></p>
 <h3 id="3、SYN-FLOOD攻击"><a href="#3、SYN-FLOOD攻击" class="headerlink" title="3、SYN FLOOD攻击"></a>3、SYN FLOOD攻击</h3><p>SYN Flood 属于典型的 DoS/DDoS 攻击。其攻击的原理很简单，就是用客户端在短时间内伪造大量不存在的 IP 地址，并向服务端疯狂发送<code>SYN</code>。</p>
 <h5 id="1、后果"><a href="#1、后果" class="headerlink" title="1、后果"></a>1、后果</h5><ol>
 <li>处理大量的<code>SYN</code>包并返回对应<code>ACK</code>, 势必有大量连接处于<code>SYN_RCVD</code>状态，从而占满整个<strong>半连接队列</strong>，无法处理正常的请求。</li>
@@ -619,14 +619,10 @@
 <li>黑客创建一个网页利用iframe包含目标网页，隐藏目标网站，使用户无法察觉到目标网站存在，构造网页，诱骗用户点击特定按钮 ；</li>
 <li>用户在不知情的情况下点击按钮，触发执行恶意网页的命令。</li>
 </ol>
-<h5 id="2、防范："><a href="#2、防范：" class="headerlink" title="2、防范："></a>2、防范：</h5><ol>
-<li><p>服务器端防御</p>
-<p>1）X-FRAME-OPTIONS 机制<br>在微软发布新一代的浏览器Internet Explorer 8.0中首次提出全新的安全机制：X-FRAME-OPTIONS。该机制有两个选项：DENY 和 SAMEORIGIN。DENY表示任何网页都不能使用 iframe 载入该网页，SAMEORIGIN表示符合同源策略的网页可以使用 iframe载入该网页。如果浏览器使用了这个安全机制，在网站发现可疑行为时，会提示用户正在浏览 网页存在安全隐患，并建议用户在新窗口中打开。这样攻击者就无法通过 iframe 隐藏目标的网页。<br>2）使用 FrameBusting 代码<br>点击劫持攻击需要首先将目标网站载入到恶意网站中，使用 iframe 载入网页是最有效的方法。Web安全研究人员针对 iframe 特性提出 Frame Busting 代码，使用 JavaScript 脚本阻止恶意网站载入网页。如果检测到网页被非法网页载入，就执行自动跳转功能。Frame Busting代码是一种有效防御网站被攻击者恶意载入的方法，网站开发人员使用Frame Busting代码阻止页面被非法载入。需要指出的情况是，如果用户浏览器禁用JavaScript脚本，那么FrameBusting代码也无法正常运行。所以，该类代码只能提供部分保障功能。<br>3）使用认证码认证用户<br>点击劫持漏洞通过伪造网站界面进行攻击，网站开发人员可以通过认证码识别用户，确定是用户发出的点击命令才执行相应操作。识别用户的方法中最有效的方法是认证码认证。例如，在网站上广泛存在的发帖认证码，要求用户输入图形中的字符，输入某些图形的特征等。</p>
-</li>
-<li><p>客户端防御<br>1）升级浏览器<br>最新版本的浏览器提供很多防御点击劫持漏洞的安全机制，对于普通的互联网用户，经常更新修复浏览器的安全漏洞，能够最有效的防止恶意攻击。<br>2）NoScript 扩展<br>对于Firefox的用户，使用 NoScript 扩展能够在一定程度上检测和阻止点击劫持攻击。利用 NoScript 中 ClearClick 组件能够检测和警告潜在的点击劫持攻击，自动检测页面中可能不安全的页面。</p>
-</li>
-</ol>
-<h3 id="7、SQL注入"><a href="#7、SQL注入" class="headerlink" title="7、SQL注入"></a>7、SQL注入</h3><h2 id="六、CDN"><a href="#六、CDN" class="headerlink" title="六、CDN"></a>六、CDN</h2><p>CDN 即内容分发网络（Content Delivery Network）的简称，是建立在承载网基础上的虚拟分布式网络，能够将源站内容（包括各类动静态资源）智能缓存到全球各节点服务器上。这样不仅方便了用户就近获取内容，提高了资源的访问速度，也分担了源站压力。</p>
+<h5 id="2、防范："><a href="#2、防范：" class="headerlink" title="2、防范："></a>2、防范：</h5><p>服务器端防御<br>   1）X-FRAME-OPTIONS 机制<br>   在微软发布新一代的浏览器Internet Explorer 8.0中首次提出全新的安全机制：X-FRAME-OPTIONS。该机制有两个选项：DENY 和 SAMEORIGIN。DENY表示任何网页都不能使用 iframe 载入该网页，SAMEORIGIN表示符合同源策略的网页可以使用 iframe载入该网页。如果浏览器使用了这个安全机制，在网站发现可疑行为时，会提示用户正在浏览 网页存在安全隐患，并建议用户在新窗口中打开。这样攻击者就无法通过 iframe 隐藏目标的网页。<br>   2）使用 FrameBusting 代码<br>   点击劫持攻击需要首先将目标网站载入到恶意网站中，使用 iframe 载入网页是最有效的方法。Web安全研究人员针对 iframe 特性提出 Frame Busting 代码，使用 JavaScript 脚本阻止恶意网站载入网页。如果检测到网页被非法网页载入，就执行自动跳转功能。Frame Busting代码是一种有效防御网站被攻击者恶意载入的方法，网站开发人员使用Frame Busting代码阻止页面被非法载入。需要指出的情况是，如果用户浏览器禁用JavaScript脚本，那么FrameBusting代码也无法正常运行。所以，该类代码只能提供部分保障功能。<br>   3）使用认证码认证用户<br>   点击劫持漏洞通过伪造网站界面进行攻击，网站开发人员可以通过认证码识别用户，确定是用户发出的点击命令才执行相应操作。识别用户的方法中最有效的方法是认证码认证。例如，在网站上广泛存在的发帖认证码，要求用户输入图形中的字符，输入某些图形的特征等。</p>
+<p>客户端防御<br>   1）升级浏览器<br>   最新版本的浏览器提供很多防御点击劫持漏洞的安全机制，对于普通的互联网用户，经常更新修复浏览器的安全漏洞，能够最有效的防止恶意攻击。<br>   2）NoScript 扩展<br>   对于Firefox的用户，使用 NoScript 扩展能够在一定程度上检测和阻止点击劫持攻击。利用 NoScript 中 ClearClick 组件能够检测和警告潜在的点击劫持攻击，自动检测页面中可能不安全的页面。</p>
+<h3 id="7、SQL注入"><a href="#7、SQL注入" class="headerlink" title="7、SQL注入"></a>7、SQL注入</h3><p>Sql 注入攻击是通过将恶意的 Sql 查询或添加语句插入到应用的输入参数中，再在后台 Sql 服务器上解析执行进行的攻击。</p>
+<h2 id="六、CDN"><a href="#六、CDN" class="headerlink" title="六、CDN"></a>六、CDN</h2><p>CDN 即内容分发网络（Content Delivery Network）的简称，是建立在承载网基础上的虚拟分布式网络，能够将源站内容（包括各类动静态资源）智能缓存到全球各节点服务器上。这样不仅方便了用户就近获取内容，提高了资源的访问速度，也分担了源站压力。</p>
 
       
 
